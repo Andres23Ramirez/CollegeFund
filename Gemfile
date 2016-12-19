@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use gem specific
 gem 'devise'
+gem 'cancancan'
+
 
 
 group :development, :test do
