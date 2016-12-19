@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use gem specific
 gem 'devise'
 gem 'cancancan'
+gem 'rolify'
 
 
 
