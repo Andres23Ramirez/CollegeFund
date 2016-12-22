@@ -3,6 +3,20 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.select :role, options_for_select([["Parent"], ["Student"], ["Donor"]]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :firts_name %><br />
+    <%= f.text_field :firts_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
