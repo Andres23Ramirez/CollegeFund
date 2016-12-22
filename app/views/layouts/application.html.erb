@@ -1,26 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>CollegeFund</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <link href="https://fonts.googleapis.com/css?family=Aladin" rel="stylesheet">
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  
 
   <body>
 
-    <% if user_signed_in? %>     
-        <%= link_to "Sign Out", destroy_user_session_path, method: :delete%>
-    <% else %>
-        <%= link_to "Sign In", new_user_session_path, method: :new%> 
-    <%end%>
-
     <%= yield %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </body>
 </html>
