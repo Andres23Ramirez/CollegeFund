@@ -1,1 +1,7 @@
 <h1>Welcome CollegeFund</h1>
+ <% if user_signed_in? %>
+      <p>Complete to Perfil</p>
+      <%= link_to "Parent", new_parent_path, method: :get%>
+ <% else %>
+     <%= link_to "Sign In", new_user_session_path, method: :new %>
+  <%end%>
