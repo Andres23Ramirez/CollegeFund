@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :donors
+  resources :students
   resources :parents
 
   devise_for :users, controllers: {registrations: 'registrations'}

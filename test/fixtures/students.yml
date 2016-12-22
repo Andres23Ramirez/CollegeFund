@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  birthdate: 2016-12-22
+  username: MyString
+  goal: 1
+  parent: one
+
+two:
+  birthdate: 2016-12-22
+  username: MyString
+  goal: 1
+  parent: two

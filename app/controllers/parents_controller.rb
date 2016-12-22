@@ -16,6 +16,7 @@ class ParentsController < ApplicationController
   # GET /parents/new
   def new
     @parent = Parent.new
+
   end
 
   # GET /parents/1/edit
@@ -26,6 +27,8 @@ class ParentsController < ApplicationController
   # POST /parents.json
   def create
     @parent = Parent.new(parent_params)
+    @user = current_user
+    @user.add_role :parent
     @parent.user= current_user
 
     respond_to do |format|

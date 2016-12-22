@@ -2,6 +2,8 @@
  <% if user_signed_in? %>
       <p>Complete to Perfil</p>
       <%= link_to "Parent", new_parent_path, method: :get%>
+      <%= link_to "Student", new_student_path, method: :get%>
+      <%= link_to "Donor", new_donor_path, method: :get%>
  <% else %>
      <%= link_to "Sign In", new_user_session_path, method: :new %>
   <%end%>
