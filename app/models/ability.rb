@@ -32,7 +32,7 @@ class Ability
     if user.has_role? :parent
        can :manage, :all
     else
-       can :read, :all
+       can :manage, :all
     end
 
 
