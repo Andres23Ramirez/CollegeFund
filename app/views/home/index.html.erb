@@ -1,9 +1,30 @@
 <h1>Welcome CollegeFund</h1>
  <% if user_signed_in? %>
-      <p>Complete to Perfil</p>
-      <%= link_to "Parent", new_parent_path, method: :get%>
-      <%= link_to "Student", new_student_path, method: :get%>
-      <%= link_to "Donor", new_donor_path, method: :get%>
+   <p>User: <%=current_user.email%></p>
+    <p>Roles: </p>
+    <% if current_user.has_role? :parent%>
+	    <p>Parent</p>
+	<% end %>
+	<% if current_user.has_role? :student%>
+	    <p>Student</p>
+	<% end %>
+	<% if current_user.has_role? :donor%>
+	   <p>Donor</p>
+    <% end %>
+   
+
+
+
+      <h2>Complete to Perfil</h2>
+      	<% unless current_user.has_role? :parent%>
+	      <%= link_to "Parent", new_parent_path, method: :get%>
+	    <% end %>
+	    <% unless current_user.has_role? :student%>
+	      <%= link_to "Student", new_student_path, method: :get%>
+	    <% end %>
+	    <% unless current_user.has_role? :donor%>
+	      <%= link_to "Donor", new_donor_path, method: :get%>
+	     <% end %>
  <% else %>
      <%= link_to "Sign In", new_user_session_path, method: :new %>
   <%end%>
