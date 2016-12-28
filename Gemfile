@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem 'rails_admin'
 
 
 
