@@ -39,6 +39,8 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 gem 'rails_admin'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 
 
