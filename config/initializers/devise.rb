@@ -10,7 +10,7 @@ Devise.setup do |config|
 
 
   #OmniAuth with Facebook
-  config.omniauth :facebook, "348967242153046", "82e7f998f2a0e75e8577c28395e9b904", callback_url: "http://localhost:3000/signin-facebook"
+  config.omniauth :facebook, "348967242153046", "82e7f998f2a0e75e8577c28395e9b904", callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
