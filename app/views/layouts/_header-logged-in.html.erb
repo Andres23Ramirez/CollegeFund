@@ -1,0 +1,35 @@
+<div id="responsive-header-logged-in" class="title-bar" data-responsive-toggle="header-logged-in" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle="header-logged-in"></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+<div id="header-logged-in" class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li id="logo-header" class="fnt-great-vibes menu-text">
+        <%= link_to root_path, method: :get do %>
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          CollegeFund.me
+        <% end %>
+      </li>      
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li>
+        <a href="#">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <%=current_user.email%>
+        </a>
+        <ul class="menu vertical">
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              Log Out
+            <% end %>
+            </a>
+          </li>          
+        </ul>
+      </li>      
+    </ul>
+  </div>
+</div>

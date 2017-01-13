@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="small-12  medium-6 medium-centered large-4 large-centered columns">
+  <div class="small-12  medium-6 medium-centered large-5 large-centered columns">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
     <div id="border-field" class="row column"> 
@@ -7,7 +7,7 @@
         <span>Sign up</span>
       </div>
       <div class="button-group">
-        <%= button_tag( :class => "button expanded btn-facebook") do %>
+        <%= link_to  user_facebook_omniauth_authorize_path, class: 'button expanded btn-facebook' do%>
           <i class="fa fa-facebook pull-left" aria-hidden="true"></i>
           <b>Sign up </b>with<b> Facebook</b>
         <% end %>
