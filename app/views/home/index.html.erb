@@ -11,9 +11,20 @@
  		<div class="text-center">
  			<span>
  				Welcome to CollegeFund: <%=current_user.email%>
- 			</span> 			
+
+ 			</span>
+ 				 			
  		</div>
  	</div>
+
+ 	<span >
+ 		<%= link_to "Show Perfil", @perfil, method: :get, class: 'hollow button large'%>
+ 		
+ 		
+
+ 	</span> 
+
+
  	<div class="row"> 		
  		<div class="small-12 medium-12 large-12 columns">
 			<div class="info-title">
@@ -29,40 +40,23 @@
 					</div>
 				</div>	
 				<div class="small-12 medium-7 large-10 columns">
-					<p>User: <%=current_user.email%></p>
-				    <p>Roles:
-				    <% if current_user.has_role? :parent%>
-					    Parent
-					<% end %>
-					<% if current_user.has_role? :student%>
-					    Student
-					<% end %>
-					<% if current_user.has_role? :donor%>
-					   Donor
-				    <% end %>
-				    </p>						
+					<p>User: <%=current_user.email%></p>		
 				</div>			
 			</div>
  		</div> 
- 		<div class="text-center">
- 			<div id="title" class="fnt-great-vibes">
- 				<span>Complete your profile</span>
- 			</div> 		
- 			<div>	
-		      	<% unless current_user.has_role? :parent%>
-			      <%= link_to "Parent", new_parent_path, method: :get, class: 'hollow button large'%>
-			    <% end %>
-			    <% unless current_user.has_role? :student%>
-			      <%= link_to "Student", new_student_path, method: :get, class: 'hollow button large'%>
-			    <% end %>
-			    <% unless current_user.has_role? :donor%>
-			      <%= link_to "Donor", new_donor_path, method: :get, class: 'hollow button large'%>
-			     <% end %>
-		 <% else %>
-		     <%= link_to "Sign In", new_user_session_path, method: :new %>
-		 <%end%>
-		 	</div>
- 		</div>			
- 	</div> 
 
-      
+ 		<% unless current_user.has_role? :donor or current_user.has_role? :student or current_user.has_role? :parent%>
+ 			<div class="text-center">
+ 				<div id="title" class="fnt-great-vibes">
+ 						<span>Complete your profile</span>
+ 				</div> 	
+
+ 				<div>	
+		        	<%= link_to "Parent", new_parent_path, method: :get, class: 'hollow button large'%>
+			    	<%= link_to "Student", new_student_path, method: :get, class: 'hollow button large'%>
+			    	<%= link_to "Donor", new_donor_path, method: :get, class: 'hollow button large'%>	
+				</div>	
+			</div>
+		<% end %>		 					
+ 	</div>
+<% end %>      
