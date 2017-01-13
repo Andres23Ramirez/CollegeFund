@@ -39,7 +39,10 @@ gem 'devise'
 gem 'cancancan'
 gem 'rolify'
 gem 'rails_admin'
-
+gem 'omniauth'
+gem 'omniauth-facebook'
+#348967242153046
+#82e7f998f2a0e75e8577c28395e9b904
 
 
 group :development, :test do
