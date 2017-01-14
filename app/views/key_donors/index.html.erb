@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Key Donors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Relationship</th>
+      <th>Students</th>
+      <th>Donor</th>
+      <th>Donation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @key_donors.each do |key_donor| %>
+      <tr>
+        <td><%= key_donor.relationship %></td>
+        <td><%= key_donor.Students %></td>
+        <td><%= key_donor.Donor %></td>
+        <td><%= key_donor.donation %></td>
+        <td><%= link_to 'Show', key_donor %></td>
+        <td><%= link_to 'Edit', edit_key_donor_path(key_donor) %></td>
+        <td><%= link_to 'Destroy', key_donor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Key Donor', new_key_donor_path %>

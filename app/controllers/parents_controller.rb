@@ -1,6 +1,11 @@
 class ParentsController < ApplicationController
-  before_action :set_parent, only: [:show, :edit, :update, :destroy]
+  before_action :set_parent, only: [:show, :edit, :update, :destroy], except: [:add_student]
   before_action :authenticate_user!
+
+  def add_student
+      @student = Student.find(params[:id])
+
+  end
 
   # GET /parents
   # GET /parents.json
@@ -11,6 +16,12 @@ class ParentsController < ApplicationController
   # GET /parents/1
   # GET /parents/1.json
   def show
+    @student
+    @students = Student.all
+    if :add
+     
+    end
+
   end
 
   # GET /parents/new
@@ -76,4 +87,8 @@ class ParentsController < ApplicationController
     def parent_params
       params.require(:parent).permit(:address, :user_id)
     end
+
+    
+
+
 end

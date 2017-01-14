@@ -1,0 +1,1 @@
+json.partial! "key_donors/key_donor", key_donor: @key_donor

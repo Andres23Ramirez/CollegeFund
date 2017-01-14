@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Relationship:</strong>
+  <%= @key_donor.relationship %>
+</p>
+
+<p>
+  <strong>Students:</strong>
+  <%= @key_donor.Students %>
+</p>
+
+<p>
+  <strong>Donor:</strong>
+  <%= @key_donor.Donor %>
+</p>
+
+<p>
+  <strong>Donation:</strong>
+  <%= @key_donor.donation %>
+</p>
+
+<%= link_to 'Edit', edit_key_donor_path(@key_donor) %> |
+<%= link_to 'Back', key_donors_path %>

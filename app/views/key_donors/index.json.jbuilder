@@ -1,0 +1,1 @@
+json.array! @key_donors, partial: 'key_donors/key_donor', as: :key_donor

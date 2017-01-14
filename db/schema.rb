@@ -10,16 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106013355) do
+ActiveRecord::Schema.define(version: 20170114175014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "donations", force: :cascade do |t|
+    t.date     "date"
+    t.integer  "amount"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "donors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_donors_on_user_id", using: :btree
+  end
+
+  create_table "key_donors", force: :cascade do |t|
+    t.string   "relationship"
+    t.integer  "students_id"
+    t.integer  "donor_id"
+    t.integer  "donation_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["donation_id"], name: "index_key_donors_on_donation_id", using: :btree
+    t.index ["donor_id"], name: "index_key_donors_on_donor_id", using: :btree
+    t.index ["students_id"], name: "index_key_donors_on_students_id", using: :btree
   end
 
   create_table "parents", force: :cascade do |t|
@@ -80,6 +100,9 @@ ActiveRecord::Schema.define(version: 20170106013355) do
   end
 
   add_foreign_key "donors", "users"
+  add_foreign_key "key_donors", "donations"
+  add_foreign_key "key_donors", "donors"
+  add_foreign_key "key_donors", "students", column: "students_id"
   add_foreign_key "parents", "users"
   add_foreign_key "students", "parents"
 end
