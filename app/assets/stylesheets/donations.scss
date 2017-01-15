@@ -1,3 +1,21 @@
 // Place all the styles related to the Donations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.donation-text
+{
+	color: #1779ba;
+    font-weight: bold;
+    font-size: 18px;
+}
+.divider-msg-bottom
+{
+	border-bottom: 1px solid #d9dadc;
+    display: block;
+    line-height: 1px;
+    margin: 15px 0;
+    position: relative;
+}
+.fnt-msg-size
+{
+	font-size: 16px;
+}

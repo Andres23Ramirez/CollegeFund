@@ -1,32 +1,37 @@
-<%= form_for(donation) do |f| %>
-  <% if donation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(donation.errors.count, "error") %> prohibited this donation from being saved:</h2>
+<div class="row">
+  <div class="small-12  medium-6 medium-centered large-6 large-centered columns">
+    <%= form_for(donation) do |f| %>
+      <% if donation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(donation.errors.count, "error") %> prohibited this donation from being saved:</h2>
 
-      <ul>
-      <% donation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% donation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+      <div id="border-field">
+        <div class="field">
+          <%= f.label :date %>
+          <%= f.date_select :date %>
+        </div>
+
+        <div class="field">
+          <%= f.label :amount %>
+          <%= f.number_field :amount %>
+        </div>
+
+        <div class="field">
+          <%= f.label :note %>
+          <%= f.text_area :note %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit class: "button expanded btn-radius-20" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.date_select :date %>
   </div>
-
-  <div class="field">
-    <%= f.label :amount %>
-    <%= f.number_field :amount %>
-  </div>
-
-  <div class="field">
-    <%= f.label :note %>
-    <%= f.text_area :note %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
