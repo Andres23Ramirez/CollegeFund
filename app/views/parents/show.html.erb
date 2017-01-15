@@ -1,96 +1,155 @@
 <p id="notice"><%= notice %></p>
-
-<h1 align="center">PARENT</h1>
-
-<p>
-  <strong>Firts Name</strong>
-  <%= @parent.user.firts_name%>
-</p>
-
-<p>
-  <strong>Last Name</strong>
-  <%= current_user.last_name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @parent.address %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @parent.user.email %>
-</p>
-
+<div class="row expanded info-title-bar title-info-bar">
+  <div class="text-center fnt-aladin">
+    <span>
+      Parent's information
+    </span>               
+  </div>
+</div> 
+<div class="row">
+  <div class="small-12  medium-11 medium-centered large-12 columns">
+    <div class="show-info text-center">
+      <p>
+        <span>
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </span>
+        <strong>Name: </strong>
+        <span>        
+          <%= @parent.user.firts_name%>
+          <%= current_user.last_name %>
+        </span>
+      </p>
+      <p>
+        <span>
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+        </span>
+        <strong>Username: </strong>
+        <span>
+          <%= @parent.user.email %>          
+        </span>
+      </p>
+      <p>
+        <span>
+          <i class="fa fa-location-arrow" aria-hidden="true"></i>
+        </span>
+        <strong>Address: </strong>
+        <span>
+          <%= @parent.address %>          
+        </span>
+      </p>      
+    </div>
+  </div>
+</div>
 <!-- My Childs -->
-<h1>My Childs</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Birthdate</th>
-      <th>Username</th>
-      <th>Goal</th>
-      <th>Parent</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @parent.students.each do |student| %>
-      <tr>
-        <td><%= student.birthdate %></td>
-        <td><%= student.username %></td>
-        <td><%= student.goal %></td>
-        <td><%= student.parent %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row expanded info-title-bar title-info-bar">
+  <div class="text-center fnt-aladin">
+    <span>
+      My Children
+    </span>               
+  </div>
+</div>  
+<div class="row">
+  <div class="small-12  medium-10 medium-centered large-12 columns">
+    <table>
+      <thead>
+        <tr>
+          <th>Birthdate</th>
+          <th>Username</th>
+          <th>Goal</th>
+          <th>Parent</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @parent.students.each do |student| %>
+          <tr>
+            <td><%= student.birthdate %></td>
+            <td><%= student.username %></td>
+            <td><%= student.goal %></td>
+            <td><%= student.parent %></td>
+            <td>
+              <%= link_to student, class: 'button small hollow btn-radius-10' do %>
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                show
+              <% end %>                
+            </td>
+            <td>
+              <%= link_to edit_student_path(student), class: 'button small hollow btn-radius-10' do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                edit
+              <% end %>                
+            </td>
+            <td>
+              <%= link_to student, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button small hollow btn-radius-10' do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+                delete
+              <% end %>                
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to new_student_path, class: 'button btn-radius-10' do %>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      New 
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Student', new_student_path %>
-
-<%= link_to 'Edit', edit_parent_path(@parent) %> |
-<%= link_to 'Back', parents_path %>
-
-
-
-
+    <%= link_to edit_parent_path(@parent), class: 'button btn-radius-10' do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      Edit
+    <% end %>
+  </div>
+</div>
 <!-- All students of app -->
-<h1>Students</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Birthdate</th>
-      <th>Username</th>
-      <th>Goal</th>
-      <th>Parent</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @students.each do |student| %>
-    	@student = student
-      <tr>
-        <td><%= student.birthdate %></td>
-        <td><%= student.username %></td>
-        <td><%= student.goal %></td>
-        <td><%= student.parent %></td>
-        <td><%= link_to 'Show', student %></td>
-        <td><%= link_to 'Add', @parent %></td>
-      </tr>
+<div class="row expanded info-title-bar title-info-bar">
+  <div class="text-center fnt-aladin">
+    <span>
+      Students
+    </span>               
+  </div>
+</div>  
+<div class="row">
+  <div class="small-12  medium-10 medium-centered large-12 columns">
+    <table>
+      <thead>
+        <tr>
+          <th>Birthdate</th>
+          <th>Username</th>
+          <th>Goal</th>
+          <th>Parent</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @students.each do |student| %>
+        	@student = student
+          <tr>
+            <td><%= student.birthdate %></td>
+            <td><%= student.username %></td>
+            <td><%= student.goal %></td>
+            <td><%= student.parent %></td>
+            <td>
+              <%= link_to student, class: 'button small hollow btn-radius-10' do %>
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                show
+              <% end %>                
+            </td>
+            <td>
+              <%= link_to @parent, class: 'button small hollow btn-radius-10' do %>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                add
+              <% end %>              
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to new_student_path, class: 'button btn-radius-10' do %>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      New 
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Student', new_student_path %>
-
-<%= link_to 'Edit', edit_parent_path(@parent) %> |
-<%= link_to 'Back', parents_path %>
+    <%= link_to edit_parent_path(@parent), class: 'button btn-radius-10' do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      Edit
+    <% end %>
+  </div>
+</div>

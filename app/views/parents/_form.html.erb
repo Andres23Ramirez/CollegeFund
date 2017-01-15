@@ -1,22 +1,25 @@
-<%= form_for(parent) do |f| %>
-  <% if parent.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
-
-      <ul>
-      <% parent.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="row">
+  <div class="small-12  medium-6 medium-centered large-6 large-centered columns">
+    <%= form_for(parent) do |f| %>
+      <% if parent.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
+          <ul>
+          <% parent.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+      <div id="border-field">
+        <div class="field">
+          <%= f.label :address %>
+          <%= f.text_field :address %>
+        </div>
+        <div class="actions">
+          <%= f.submit class: "button expanded btn-radius-20" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

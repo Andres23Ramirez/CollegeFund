@@ -1,26 +1,52 @@
 <p id="notice"><%= notice %></p>
-
-<h1 align="center">STUDENT</h1>
-
-<p>
-  <strong>Birthdate:</strong>
-  <%= @student.birthdate %>
-</p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @student.username %>
-</p>
-
-<p>
-  <strong>Goal:</strong>
-  <%= @student.goal %>
-</p>
-
-<p>
-  <strong>Parent:</strong>
-  <%= @student.parent %>
-</p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<div class="row expanded info-title-bar title-info-bar">
+  <div class="text-center fnt-aladin">
+    <span>
+      Student's Information
+    </span>               
+  </div>
+</div>
+<div class="row">
+  <div class="small-12  medium-9 medium-centered large-6 large-centered columns">
+    <div class="show-info text-center"> 
+      <p>
+        <span>
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+        </span>
+        <strong>Birthdate:</strong>
+        <span>
+          <%= @student.birthdate %>
+        </span>
+      </p>
+      <p>
+        <span>
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </span>
+        <strong>Username:</strong>
+        <%= @student.username %>
+      </p>
+      <p>
+        <span>
+          <i class="fa fa-money" aria-hidden="true"></i>
+        </span>
+        <strong>Goal:</strong>}
+        <span>
+          <%= @student.goal %>
+        </span>
+      </p>
+      <p>
+        <span>
+          <i class="fa fa-user" aria-hidden="true"></i>
+        </span>
+        <strong>Parent:</strong>
+        <span>
+          <%= @student.parent %>
+        </span>
+      </p>
+      <%= link_to edit_student_path(@student), class: 'button btn-radius-10' do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+        Edit 
+      <% end %>
+    </div>
+  </div>
+</div>

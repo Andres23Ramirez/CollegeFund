@@ -18,3 +18,16 @@
 @import "foundation_and_overrides";
 @import "font-awesome";
 
+#container
+{
+	min-height: 640px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#container-logged
+{
+	min-height: 675px;
+	margin-top: 30px;
+    margin-bottom: 30px;
+}
+

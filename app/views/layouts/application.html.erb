@@ -11,15 +11,18 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-
   <body>
     <% if user_signed_in? %>
       <%= render 'layouts/header-logged-in' %> 
+      <div id="container-logged">
+       <%= yield %>
+      </div>
     <% else %>
-      <%= render 'layouts/header-logout' %>    
-    <%end%>
-
-    <%= yield %>
+      <%= render 'layouts/header-logout' %>  
+      <div id="container">
+       <%= yield %>
+      </div>  
+    <%end%>    
     <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -11,20 +11,9 @@
  		<div class="text-center">
  			<span>
  				Welcome to CollegeFund: <%=current_user.email%>
-
- 			</span>
- 				 			
+ 			</span> 				 			
  		</div>
- 	</div>
-
- 	<span >
- 		<%= link_to "Show Perfil", @perfil, method: :get, class: 'hollow button large'%>
- 		
- 		
-
- 	</span> 
-
-
+ 	</div> 	
  	<div class="row"> 		
  		<div class="small-12 medium-12 large-12 columns">
 			<div class="info-title">
@@ -36,21 +25,19 @@
 			<div class="border-info row column">
 				<div id="profile-pic" class="small-12 medium-5 large-2  columns">
 					<div class="thumbnail">
-								<%= image_tag("profile-img.jpg", :alt => "profile pic") %>
+						<%= image_tag("profile-img.jpg", :alt => "profile pic") %>
 					</div>
 				</div>	
 				<div class="small-12 medium-7 large-10 columns">
 					<p>User: <%=current_user.email%></p>		
 				</div>			
 			</div>
- 		</div> 
-
+ 		</div>
  		<% unless current_user.has_role? :donor or current_user.has_role? :student or current_user.has_role? :parent%>
  			<div class="text-center">
  				<div id="title" class="fnt-great-vibes">
- 						<span>Complete your profile</span>
+ 						<span>Choose your profile</span>
  				</div> 	
-
  				<div>	
 		        	<%= link_to "Parent", new_parent_path, method: :get, class: 'hollow button large'%>
 			    	<%= link_to "Student", new_student_path, method: :get, class: 'hollow button large'%>

@@ -15,10 +15,15 @@
   </div>
   <div class="top-bar-right">
     <ul class="dropdown menu" data-dropdown-menu>
+      <li id="profile-link">
+        <%= link_to  @perfil, method: :get do%>
+          <i class="fa fa-user-circle" aria-hidden="true"></i>
+          <%=current_user.email%>
+         <% end %> 
+      </li>
       <li>
         <a href="#">
-          <i class="fa fa-user" aria-hidden="true"></i>
-          <%=current_user.email%>
+          <i class="fa fa-cog" aria-hidden="true"></i>          
         </a>
         <ul class="menu vertical">
           <li>
