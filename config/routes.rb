@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :donations
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  resources :donors
+  resources :donors do
+      resources :key_donors
+  end
+
+
   resources :parents 
   resources :students
   

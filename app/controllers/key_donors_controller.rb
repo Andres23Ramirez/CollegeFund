@@ -15,6 +15,8 @@ class KeyDonorsController < ApplicationController
   # GET /key_donors/new
   def new
     @key_donor = KeyDonor.new
+    @donor = Donor.find(params[:donor_id])
+    @students = Student.all 
   end
 
   # GET /key_donors/1/edit
