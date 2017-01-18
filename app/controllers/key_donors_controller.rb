@@ -1,6 +1,12 @@
 class KeyDonorsController < ApplicationController
-  before_action :set_key_donor, only: [:show, :edit, :update, :destroy]
+  before_action :set_key_donor, only: [:show, :edit, :update, :destroy], except: [:search]
 
+  def search
+   
+   @students = Student.find_by username: params[:username]
+   
+
+  end
   # GET /key_donors
   # GET /key_donors.json
   def index
@@ -16,12 +22,12 @@ class KeyDonorsController < ApplicationController
   def new
     @key_donor = KeyDonor.new
     @donor = Donor.find(params[:donor_id])
-    @students = Student.all 
+    
   end
 
   # GET /key_donors/1/edit
   def edit
-  end
+  end 
 
   # POST /key_donors
   # POST /key_donors.json

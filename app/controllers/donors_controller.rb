@@ -10,6 +10,11 @@ class DonorsController < ApplicationController
   # GET /donors/1
   # GET /donors/1.json
   def show
+    if params[:username].present?
+       @students = Student.where("username = ?", params[:username])
+       render "show"
+    end
+
   end
 
   # GET /donors/new
