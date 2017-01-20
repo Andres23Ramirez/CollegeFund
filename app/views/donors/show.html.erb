@@ -77,7 +77,7 @@
       </thead>
       <tbody>
         <% @students.each do |student| %>
-          
+          @student = student
           <tr>
             <td><%= student.birthdate %></td>
             <td><%= student.username %></td>
@@ -103,14 +103,14 @@
 </div>
 <% end %>
 
-<div class="row">
-	<div class="small-12  medium-10 medium-centered large-12 columns">
-		<%= link_to new_donor_key_donor_path(@donor), class: 'button btn-radius-10' do %>
-	      <i class="fa fa-pencil" aria-hidden="true"></i>
-	      Donation
-	    <% end %>
-	</div>
-</div>
+<% unless @student == nil %>
+
+<%= form_tag({controller: "donors", action:"donation"}, method: "get") do %>
+  <%= text_field_tag(:id_student, @student.id) %>
+  <%= submit_tag("Donation") %>
+<% end %>
+
+<% end %> 
 
 <div class="row">
 	<div class="small-12  medium-10 medium-centered large-12 columns">

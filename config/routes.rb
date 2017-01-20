@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get  '/key_donors/search', to: 'key_donors#search'
   end
 
+  get '/donors/:id/donation', to: 'donors#donation'
+
 
   resources :parents 
   resources :students

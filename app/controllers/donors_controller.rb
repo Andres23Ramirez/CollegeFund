@@ -1,6 +1,25 @@
 class DonorsController < ApplicationController
   before_action :set_donor, only: [:show, :edit, :update, :destroy]
 
+  def donation
+    @donor = Donor.find(params[:id])
+    @student = Student.find(params[:id_student])
+    @key_donor = KeyDonor.new
+    @key_donor.students_id = @student
+    @key_donor.donor_id = @donor
+
+    respond_to do |format|    
+      if @key_donor.save
+        format.html { redirect_to @donor, notice: 'Key Donor was successfully created.' }
+        format.json { render :show, status: :created, location: @donor }
+      else
+        format.html { render :new }
+        format.json { render json: @key_donor.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   # GET /donors
   # GET /donors.json
   def index
@@ -12,6 +31,7 @@ class DonorsController < ApplicationController
   def show
     if params[:username].present?
        @students = Student.where("username = ?", params[:username])
+       @student = @students.first
        render "show"
     end
 
@@ -20,6 +40,7 @@ class DonorsController < ApplicationController
   # GET /donors/new
   def new
     @donor = Donor.new
+    @key_donor = KeyDonor.new
   end
 
   # GET /donors/1/edit
