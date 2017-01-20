@@ -96,7 +96,7 @@
               <% end %>              
             </td>
           </tr>
-        <% end %>
+        <% end %>s
       </tbody>
     </table>    
   </div>
@@ -104,9 +104,14 @@
 <% end %>
 
 <% unless @student == nil %>
+<h2>Create Donation</h2>
 
 <%= form_tag({controller: "donors", action:"donation"}, method: "get") do %>
-  <%= text_field_tag(:id_student, @student.id) %>
+  <%=text_field_tag(:id_student, @student.id) %>
+  <%= label_tag(:amount, "How money want donation") %>
+  <%= number_field_tag(:amount) %>
+  <%= label_tag(:note, "Writte some") %>
+  <%= text_area_tag(:note, "Hi, nice site", size: "24x6") %>
   <%= submit_tag("Donation") %>
 <% end %>
 

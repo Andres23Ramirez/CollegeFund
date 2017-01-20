@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   resources :donations
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  resources :donors do
-      resources :key_donors
-      get  '/key_donors/search', to: 'key_donors#search'
-  end
+  resources :donors 
+  resources :key_donors
+    
 
   get '/donors/:id/donation', to: 'donors#donation'
 

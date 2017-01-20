@@ -5,16 +5,22 @@ class DonorsController < ApplicationController
     @donor = Donor.find(params[:id])
     @student = Student.find(params[:id_student])
     @key_donor = KeyDonor.new
-    @key_donor.students_id = @student
-    @key_donor.donor_id = @donor
+    @key_donor.students_id = @student.id
+    @key_donor.donor_id = @donor.id
+    @donation = Donation.new
+    @donation.amount = params[:amount]
+    @donation.note =  params[:note]
 
-    respond_to do |format|    
-      if @key_donor.save
-        format.html { redirect_to @donor, notice: 'Key Donor was successfully created.' }
-        format.json { render :show, status: :created, location: @donor }
-      else
-        format.html { render :new }
-        format.json { render json: @key_donor.errors, status: :unprocessable_entity }
+    if @donation.save
+      @key_donor.donation = @donation
+      respond_to do |format|    
+        if @key_donor.save
+         format.html { redirect_to key_donor_path(@key_donor), notice: 'Key Donor was successfully created.' }
+          format.json { render :show, status: :created, location: @key_donor }
+        else
+          format.html { render :new }
+          format.json { render json: @key_donor.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -29,6 +35,7 @@ class DonorsController < ApplicationController
   # GET /donors/1
   # GET /donors/1.json
   def show
+
     if params[:username].present?
        @students = Student.where("username = ?", params[:username])
        @student = @students.first
