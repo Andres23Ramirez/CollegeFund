@@ -99,6 +99,17 @@
     <% end %>
   </div>
 </div>
+
+
+<div class="row expanded info-title-bar title-info-bar">
+  <div class="text-center fnt-aladin">
+    <span>
+      <%= link_to "View All donatios", key_donors_path %>
+    </span>               
+  </div>
+</div> 
+
+
 <h2>Typing Username of student add with children </h2>
 <%= form_tag({controller: "parents", action:"add_student"}, method: "get") do %>
   <%= label_tag(:username, "Username:") %>
