@@ -5,7 +5,6 @@ class KeyDonorsController < ApplicationController
    
    @students = Student.find_by username: params[:username]
    
-
   end
   # GET /key_donors
   # GET /key_donors.json

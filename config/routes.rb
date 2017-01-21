@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :donors 
   resources :key_donors
     
-
+  get '/parents/:id/add_student', to: 'parents#add_student'
   get '/donors/:id/donation', to: 'donors#donation'
 
 

@@ -99,6 +99,13 @@
     <% end %>
   </div>
 </div>
+<h2>Typing Username of student add with children </h2>
+<%= form_tag({controller: "parents", action:"add_student"}, method: "get") do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <%= submit_tag("Add") %>
+<% end %>
+
 <!-- All students of app -->
 <div class="row expanded info-title-bar title-info-bar">
   <div class="text-center fnt-aladin">
@@ -121,7 +128,7 @@
       </thead>
       <tbody>
         <% @students.each do |student| %>
-        	@student = student
+        	
           <tr>
             <td><%= student.birthdate %></td>
             <td><%= student.username %></td>
@@ -132,12 +139,6 @@
                 <i class="fa fa-eye" aria-hidden="true"></i>
                 show
               <% end %>                
-            </td>
-            <td>
-              <%= link_to @parent, class: 'button small hollow btn-radius-10' do %>
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                add
-              <% end %>              
             </td>
           </tr>
         <% end %>

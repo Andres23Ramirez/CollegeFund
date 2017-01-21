@@ -3,9 +3,25 @@ class ParentsController < ApplicationController
   before_action :authenticate_user!
 
   def add_student
-      @student = Student.find(params[:id])
+    @parent = Parent.find(params[:id])
+    @student = Student.where("username = ?", params[:username])
+    unless @student==nil 
+      @student = @student.first
+    end
 
+    @parent.students.push(@student)
+
+      respond_to do |format|    
+        if @parent.save
+          format.html { redirect_to parent_path(@parent), notice: 'Parent actulite sucesfully' }
+          format.json { render :show, status: :created, location: @parent }
+        else
+          format.html { render :new }
+          format.json { render json: @parent, status: :unprocessable_entity }
+        end
+      end
   end
+  
 
   # GET /parents
   # GET /parents.json
@@ -18,10 +34,6 @@ class ParentsController < ApplicationController
   def show
     @student
     @students = Student.all
-    if :add
-     
-    end
-
   end
 
   # GET /parents/new
