@@ -9,8 +9,10 @@ class ParentsController < ApplicationController
       @student = @student.first
     end
 
-    @parent.students.push(@student)
-
+    unless @student==nil
+      @parent.students.push(@student)
+    end
+    
       respond_to do |format|    
         if @parent.save
           format.html { redirect_to parent_path(@parent), notice: 'Parent actulite sucesfully' }
