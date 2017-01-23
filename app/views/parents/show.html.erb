@@ -7,38 +7,84 @@
   </div>
 </div> 
 <div class="row">
-  <div class="small-12  medium-11 medium-centered large-12 columns">
-    <div class="show-info text-center">
-      <p>
-        <span>
-          <i class="fa fa-user" aria-hidden="true"></i>
-        </span>
-        <strong>Name: </strong>
-        <span>        
-          <%= @parent.user.firts_name%>
-          <%= current_user.last_name %>
-        </span>
-      </p>
-      <p>
-        <span>
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-        </span>
-        <strong>Username: </strong>
-        <span>
-          <%= @parent.user.email %>          
-        </span>
-      </p>
-      <p>
-        <span>
-          <i class="fa fa-location-arrow" aria-hidden="true"></i>
-        </span>
-        <strong>Address: </strong>
-        <span>
-          <%= @parent.address %>          
-        </span>
-      </p>      
+  <div class="small-12  medium-10 medium-centered large-8 large-centered columns">
+    <div class="show-info reveal" id="addchild-reveal" data-reveal>
+      <div class="row expanded title-info-bar">
+        <div class="text-center fnt-aladin">
+          <span>
+            Type a student to be added to your children
+          </span>               
+        </div>
+      </div>
+      <%= form_tag({controller: "parents", action:"add_student"}, method: "get") do %>
+        <%= label_tag(:username, "Username:") %>
+        <%= text_field_tag(:username) %>
+        <%= submit_tag("Add", {:class => "button btn-radius-10"})%>              
+      <% end %>      
+      <button class="close-button" data-close aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   </div>
+</div>
+<div class="row">     
+  <div class="small-12 medium-12 large-12 columns">
+    <div class="info-title">
+      <span>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        Basic information
+      </span>
+    </div>
+    <div class="border-info row column">
+      <div id="profile-pic" class="small-12 medium-5 large-2  columns">
+        <div class="thumbnail">
+          <%= image_tag("profile-img.jpg", :alt => "profile pic") %>
+        </div>
+      </div>  
+      <div class="small-12 medium-7 large-10 columns">
+        <div class="text-left">
+          <p>
+            <span>
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </span>
+            <strong>Name: </strong>
+            <span>        
+              <%= @parent.user.firts_name%>
+              <%= current_user.last_name %>
+            </span>
+          </p>
+          <p>
+            <span>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+            <strong>Username: </strong>
+            <span>
+              <%= @parent.user.email %>          
+            </span>
+          </p>
+          <p>
+            <span>
+              <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            </span>
+            <strong>Address: </strong>
+            <span>
+              <%= @parent.address %>          
+            </span>
+          </p>      
+        </div>    
+      </div>      
+    </div>
+  </div>              
+</div>
+<!--Options-->
+<div class="text-center">
+  <div id="title" class="fnt-great-vibes">
+      <span>Options</span>
+  </div>  
+  <div> 
+      <%= link_to "View All Donations", key_donors_path ,class: 'hollow button large'%>
+      <%= button_tag( "Add My Children", :class => "hollow button large", :data => {:open => "addchild-reveal"})%> 
+  </div>  
 </div>
 <!-- My Childs -->
 <div class="row expanded info-title-bar title-info-bar">
@@ -89,34 +135,16 @@
         <% end %>
       </tbody>
     </table>
-    <%= link_to new_student_path, class: 'button btn-radius-10' do %>
+    <%= link_to new_student_path, class: 'button btn-radius-10 btn-visited' do %>
       <i class="fa fa-plus" aria-hidden="true"></i>
       New 
     <% end %>
-    <%= link_to edit_parent_path(@parent), class: 'button btn-radius-10' do %>
+    <%= link_to edit_parent_path(@parent), class: 'button btn-radius-10 btn-visited' do %>
       <i class="fa fa-pencil" aria-hidden="true"></i>
       Edit
     <% end %>
   </div>
 </div>
-
-
-<div class="row expanded info-title-bar title-info-bar">
-  <div class="text-center fnt-aladin">
-    <span>
-      <%= link_to "View All donatios", key_donors_path %>
-    </span>               
-  </div>
-</div> 
-
-
-<h2>Typing Username of student add with children </h2>
-<%= form_tag({controller: "parents", action:"add_student"}, method: "get") do %>
-  <%= label_tag(:username, "Username:") %>
-  <%= text_field_tag(:username) %>
-  <%= submit_tag("Add") %>
-<% end %>
-
 <!-- All students of app -->
 <div class="row expanded info-title-bar title-info-bar">
   <div class="text-center fnt-aladin">
@@ -155,11 +183,11 @@
         <% end %>
       </tbody>
     </table>
-    <%= link_to new_student_path, class: 'button btn-radius-10' do %>
+    <%= link_to new_student_path, class: 'button btn-radius-10 btn-visited' do %>
       <i class="fa fa-plus" aria-hidden="true"></i>
       New 
     <% end %>
-    <%= link_to edit_parent_path(@parent), class: 'button btn-radius-10' do %>
+    <%= link_to edit_parent_path(@parent), class: 'button btn-radius-10 btn-visited' do %>
       <i class="fa fa-pencil" aria-hidden="true"></i>
       Edit
     <% end %>

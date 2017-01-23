@@ -7,55 +7,83 @@
     </span>               
   </div> 
 </div> 
-
+<div class="row">     
+  <div class="small-12 medium-12 large-12 columns">
+    <div class="info-title">
+      <span>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        Basic information
+      </span>
+    </div>
+    <div class="border-info row column">
+      <div id="profile-pic" class="small-12 medium-5 large-2  columns">
+        <div class="thumbnail">
+          <%= image_tag("profile-img.jpg", :alt => "profile pic") %>
+        </div>
+      </div>  
+      <div class="small-12 medium-7 large-10 columns">
+        <div class="text-left">
+          <p>
+            <span>
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </span>
+            <strong>Name: </strong>
+            <span>        
+              <%= @donor.user.firts_name%>
+              <%= current_user.last_name %>
+            </span>
+          </p>
+          <p>
+            <span>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
+            <strong>Username: </strong>
+            <span>
+              <%= @donor.user.email %>          
+            </span>
+          </p>                
+        </div> 
+        <div class="row">
+          <div class="small-12  medium-10 medium-centered large-12 columns">
+            <%= link_to edit_donor_path(@donor), class: 'button btn-radius-10 btn-visited' do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Edit
+              <% end %>
+          </div>
+        </div>   
+      </div>      
+    </div>
+  </div>              
+</div>
+<div class="row expanded info-title-bar title-info-bar">
+  <div class="text-center fnt-aladin">
+    <span>
+      Search a student and donate
+    </span>               
+  </div> 
+</div> 
 <div class="row">
-  <div class="small-12  medium-11 medium-centered large-12 columns">
-    <div class="show-info text-center">
-      <p>
-        <span>
-          <i class="fa fa-user" aria-hidden="true"></i>
-        </span>
-        <strong>Name: </strong>
-        <span>        
-          <%= @donor.user.firts_name%>
-          <%= current_user.last_name %>
-        </span>
-      </p>
-      <p>
-        <span>
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-        </span>
-        <strong>Username: </strong>
-        <span>
-          <%= @donor.user.email %>          
-        </span>
-      </p>
+  <div class="small-12  medium-10 medium-centered large-8 large-centered columns">
+    <div class="show-info">
+      <%= form_tag @donor, method: :get do %>
+        <%= label_tag(:username, "UserName:") %>
+        <%= text_field_tag(:username) %>
+        <!--
+        <%= label_tag(:email, "Email:") %>
+        <%= text_field_tag(:email) %>
+        <%= label_tag(:firts_name, "Firts Name:") %>
+        <%= text_field_tag(:firts_name) %>
+        <%= label_tag(:last_name, "Last Name:") %>
+        <%= text_field_tag(:last_name) %>
+        <%= label_tag(:last_name, "Last Name:") %>
+        <%= text_field_tag(:last_name) %>
+         -->
+        <%= submit_tag("Search", {:class => "button btn-radius-10"})%>
+      <% end %>
     </div>
   </div>
 </div>
-
-<h2>
-    Search Students for Donation
-</h2> 
-<%= form_tag @donor, method: :get do %>
-  <%= label_tag("Search for:") %>
-  <%= label_tag(:username, "UserName:") %>
-  <%= text_field_tag(:username) %>
-  <!--
-  <%= label_tag(:email, "Email:") %>
-  <%= text_field_tag(:email) %>
-  <%= label_tag(:firts_name, "Firts Name:") %>
-  <%= text_field_tag(:firts_name) %>
-  <%= label_tag(:last_name, "Last Name:") %>
-  <%= text_field_tag(:last_name) %>
-  <%= label_tag(:last_name, "Last Name:") %>
-  <%= text_field_tag(:last_name) %>
-   -->
-  <%= submit_tag("Buscar")%>
-<% end %>
-
 <% unless @students == nil %>
-
  <div class="row expanded info-title-bar title-info-bar">
   <div class="text-center fnt-aladin">
     <span>
@@ -104,24 +132,35 @@
 <% end %>
 
 <% unless @student == nil %>
-<h2>Create Donation</h2>
-
-<%= form_tag({controller: "donors", action:"donation"}, method: "get") do %>
-  <%=text_field_tag(:id_student, @student.id) %>
-  <%= label_tag(:amount, "How money want donation") %>
-  <%= number_field_tag(:amount) %>
-  <%= label_tag(:note, "Writte some") %>
-  <%= text_area_tag(:note, "Hi, nice site", size: "24x6") %>
-  <%= submit_tag("Donation") %>
-<% end %>
-
+  <!--Options-->
+  <div class="text-center">
+    <div id="title" class="fnt-great-vibes">
+        <span>Options</span>
+    </div>  
+    <div> 
+        <%= button_tag( "Donate", :class => "hollow button large", :data => {:open => "donate-reveal"})%> 
+    </div>  
+  </div>
+  <div class="row">
+    <div class="small-12  medium-10 medium-centered large-8 large-centered columns">
+      <div class="show-info reveal" id="donate-reveal" data-reveal>
+        <div class="row expanded title-info-bar">
+          <div class="text-center fnt-aladin">
+            <span>
+              Create Donation
+            </span>               
+          </div>
+        </div>
+        <%= form_tag({controller: "donors", action:"donation"}, method: "get") do %>
+          <%=text_field_tag(:id_student, @student.id) %>
+          <%= label_tag(:amount, "How much money do you want to donate?") %>
+          <%= number_field_tag(:amount) %>
+          <%= label_tag(:note, "Writte something") %>
+          <%= text_area_tag(:note, "Hi, enjoy it!", size: "24x6") %>
+          <%= submit_tag("Donate", {:class => "button expanded btn-radius-10"}) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %> 
 
-<div class="row">
-	<div class="small-12  medium-10 medium-centered large-12 columns">
-		<%= link_to edit_donor_path(@donor), class: 'button btn-radius-10' do %>
-	      <i class="fa fa-pencil" aria-hidden="true"></i>
-	      Edit
-	    <% end %>
-	</div>
-</div>
